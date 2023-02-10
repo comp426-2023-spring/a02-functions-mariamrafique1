@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
 import minimist from "minimist";
-
+import moment from "moment-timezone";
 import fetch from "node-fetch";
 
-import moment from "moment-timezone";
+
 
 
 const arg = minimist(process.argv.slice(2)); 
@@ -26,8 +26,8 @@ if (arg.h) {
 const time_zone = moment.tz.guess()  
 var latitude = arg.n || arg.s * -1;
 var longitude = arg.e || arg.w * -1;
-const link = "https://api.open-meteo.com/v1/forecast?latitude=" + latitude + "&longitude=" + longitude + "&daily=precipitation_hours&timezone=" + time_zone;
-const response = await fetch(link);
+const url = "https://api.open-meteo.com/v1/forecast?latitude=" + latitude + "&longitude=" + longitude + "&daily=precipitation_hours&timezone=" + time_zone;
+const response = await fetch(url);
 const data = await response.json();
 
 if (arg.j){
