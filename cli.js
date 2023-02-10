@@ -23,10 +23,10 @@ if (arg.h) {
   process.exit(0);
 }
 
-const time_zone = moment.tz.guess()  
+const timezone = moment.tz.guess()  
 var latitude = arg.n || arg.s * -1;
 var longitude = arg.e || arg.w * -1;
-const url = "https://api.open-meteo.com/v1/forecast?latitude=" + latitude + "&longitude=" + longitude + "&daily=precipitation_hours&timezone=" + time_zone;
+const url = "https://api.open-meteo.com/v1/forecast?latitude=" + latitude + "&longitude=" + longitude + "&daily=precipitation_hours&timezone=" + timezone;
 const response = await fetch(url);
 const data = await response.json();
 
@@ -37,6 +37,8 @@ if (arg.j){
 
 const dayOfWeek = arg.d
 //if precipitation days does not = 0, u might need galoshes
+//n
+
 
 if(data.daily.precipitation_hours[days] != 0.0) {
   console.log("You might need your galoshes");
