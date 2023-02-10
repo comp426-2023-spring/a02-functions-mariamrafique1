@@ -40,7 +40,7 @@ const dayOfWeek = arg.d
 //n
 
 
-if(data.daily.precipitation_hours[days] != 0.0) {
+if(data.daily.precipitation_hours[dayOfWeek] != 0.0) {
   console.log("You might need your galoshes");
 } 
 //else you will NOT need galoshes
