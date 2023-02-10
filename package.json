@@ -1,0 +1,26 @@
+{
+  "name": "a02-mariamrafique",
+  "version": "1.0.0",
+  "description": "lab 02",
+  "main": "index.js",
+  "type": "module",
+  "bin": {
+    "galosh.js": "./cli.js"
+  },
+  "scripts": {
+    "test": "node cli.js -n 35.92 -w 79.05 -z America/New_York"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/comp426-2023-spring/a02-functions-mariamrafique1.git"
+  },
+  "author": "MariamRafique",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/comp426-2023-spring/a02-functions-mariamrafique1/issues"
+  },
+  "homepage": "https://github.com/comp426-2023-spring/a02-functions-mariamrafique1#readme",
+  "dependencies": {
+    "minimist": "^1.2.7"
+  }
+}
