@@ -1,8 +1,11 @@
 #!/usr/bin/env node
 
 import minimist from "minimist";
-import moment from "moment-timezone";
+
 import fetch from "node-fetch";
+
+import moment from "moment-timezone";
+
 
 const arg = minimist(process.argv.slice(2)); 
 
@@ -23,9 +26,8 @@ if (arg.h) {
 const time_zone = moment.tz.guess()  
 var latitude = arg.n || arg.s * -1;
 var longitude = arg.e || arg.w * -1;
-
-const url = "https://api.open-meteo.com/v1/forecast?latitude=" + latitude + "&longitude=" + longitude + "&daily=precipitation_hours&timezone=" + time_zone;
-const response = await fetch(url);
+const link = "https://api.open-meteo.com/v1/forecast?latitude=" + latitude + "&longitude=" + longitude + "&daily=precipitation_hours&timezone=" + time_zone;
+const response = await fetch(link);
 const data = await response.json();
 
 if (arg.j){
@@ -33,21 +35,26 @@ if (arg.j){
   process.exit(0);
 }
 
-const days = arg.d
+const dayOfWeek = arg.d
+//if precipitation days does not = 0, u might need galoshes
 
 if(data.daily.precipitation_hours[days] != 0.0) {
   console.log("You might need your galoshes");
 } 
+//else you will NOT need galoshes
 else{
   console.log("You will not need your galoshes");
 }
 
-if (days == 0) {
+//if day of week equals to 0, then its today 
+if (dayOfWeek == 0) {
   console.log("today.")
 } 
-else if (days > 1) {
-  console.log("in " + days + " days.")
+//if day of week is greter than 1, then use var day of week
+else if (dayOfWeek > 1) {
+  console.log("in " + dayOfWeek + " days.")
 } 
+//other wise day = tmr
 else {
   console.log("tomorrow.")
 }
